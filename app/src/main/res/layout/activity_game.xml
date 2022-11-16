@@ -8,22 +8,14 @@
     tools:context=".activities.GameActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/ly_card_dealer"
+        android:id="@+id/lyCardDealer"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/back_card1_dealer"
-            android:layout_width="wrap_content"
-            android:src="@drawable/card_back"
-            android:layout_weight="1"
-            android:scaleType="centerInside"
-            android:layout_height="wrap_content">
-        </ImageView>
-        <ImageView
-            android:id="@+id/back_card2_dealer"
+            android:id="@+id/dealerBackCard"
             android:layout_width="wrap_content"
             android:src="@drawable/card_back"
             android:layout_weight="1"
@@ -33,7 +25,7 @@
     </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/ly_card_player"
+        android:id="@+id/lyCardPlayer"
         android:layout_width="match_parent"
         android:layout_alignBottom="@+id/ly_buttons"
         android:orientation="horizontal"
@@ -41,15 +33,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/playerFirstBackCard"
-            android:layout_width="wrap_content"
-            android:src="@drawable/card_back"
-            android:layout_weight="1"
-            android:scaleType="centerInside"
-            android:layout_height="wrap_content">
-        </ImageView>
-        <ImageView
-            android:id="@+id/playerSecondBackCard"
+            android:id="@+id/playerBackCard"
             android:layout_width="wrap_content"
             android:src="@drawable/card_back"
             android:layout_weight="1"
@@ -64,17 +48,17 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/tvCurrentStreak"
+            android:id="@+id/tvPointsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Current Streak"
+            android:text="Points"
             android:textSize="32dp" />
         <TextView
-            android:id="@+id/tvStreakPoints"
+            android:id="@+id/tvPoints"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_below="@+id/tvCurrentStreak"
+            android:layout_below="@+id/tvPointsLabel"
             android:layout_centerInParent="true"
             android:textSize="32dp"
             android:text="0" />
