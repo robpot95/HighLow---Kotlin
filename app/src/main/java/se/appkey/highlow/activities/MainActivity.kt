@@ -1,9 +1,11 @@
 package se.appkey.highlow.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import se.appkey.highlow.R
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private fun init() {
         val playButton = findViewById<Button>(R.id.btnPlay)
         playButton.setOnClickListener {
-            // Go to next screen
+            startActivity(Intent(this, GameActivity::class.java))
         }
     }
 }
