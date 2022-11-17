@@ -1,5 +1,6 @@
 package se.appkey.highlow.activities
 
+import Deck
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -7,7 +8,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import se.appkey.highlow.R
-import kotlin.random.Random
 
 class GameActivity : AppCompatActivity() {
     // Initialize
@@ -17,23 +17,8 @@ class GameActivity : AppCompatActivity() {
     private lateinit var ivPlayerCard : ImageView
     private lateinit var ivDealerCard : ImageView
 
-    private val random : Random = Random
     private var points : Int = 0
-    private val cards = intArrayOf(
-        R.drawable.hearts2,
-        R.drawable.hearts3,
-        R.drawable.hearts4,
-        R.drawable.hearts5,
-        R.drawable.hearts6,
-        R.drawable.hearts7,
-        R.drawable.hearts8,
-        R.drawable.hearts9,
-        R.drawable.hearts10,
-        R.drawable.hearts12,
-        R.drawable.hearts13,
-        R.drawable.hearts14,
-        R.drawable.hearts15
-    )
+    private val deck = Deck()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,18 +42,18 @@ class GameActivity : AppCompatActivity() {
     }
 
     private val clickListener: View.OnClickListener = View.OnClickListener { view ->
-        val playerCard = randomCard(ivPlayerCard)
-        val dealerCard = randomCard(ivDealerCard)
+        val playerCard = deck.drawCard(ivPlayerCard)
+        val dealerCard = deck.drawCard(ivDealerCard)
         when (view.id) {
             R.id.btnHigh -> {
-                if (playerCard > dealerCard) {
+                if (playerCard.getValue() > dealerCard.getValue()) {
                     points++
                 } else {
                     points--
                 }
             }
             R.id.btnLow -> {
-                if (playerCard < dealerCard) {
+                if (playerCard.getValue() < dealerCard.getValue()) {
                     points++
                 } else {
                     points--
@@ -77,11 +62,5 @@ class GameActivity : AppCompatActivity() {
         }
 
         tvPoints.text = points.toString()
-    }
-
-    private fun randomCard(image: ImageView) : Int {
-        val randomNumber = random.nextInt(cards.size)
-        image.setImageResource(cards[randomNumber])
-        return randomNumber
     }
 }
