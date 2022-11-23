@@ -27,6 +27,14 @@
             android:layout_centerInParent="true"
             android:textSize="32dp"
             android:text="PLAY" />
+        <Button
+            android:id="@+id/btnHowToPlay"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/btnPlay"
+            android:layout_centerInParent="true"
+            android:textSize="32dp"
+            android:text="HOW TO PLAY" />
 
     </RelativeLayout>
 
