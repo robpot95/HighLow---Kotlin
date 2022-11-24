@@ -1,10 +1,33 @@
+import android.content.res.Resources
+import android.content.res.TypedArray
+import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import se.appkey.highlow.R
 import kotlin.random.Random
 
+
 class Deck {
-    private val cards = mutableListOf(Card(2, R.drawable.hearts2), Card(3, R.drawable.hearts3), Card(4, R.drawable.hearts4), Card(5, R.drawable.hearts5), Card(6, R.drawable.hearts6), Card(7, R.drawable.hearts7), Card(8, R.drawable.hearts8), Card(9, R.drawable.hearts9), Card(10, R.drawable.hearts10), Card(12, R.drawable.hearts12), Card(13, R.drawable.hearts13), Card(14, R.drawable.hearts14), Card(15, R.drawable.hearts15))
+    private val cards = mutableListOf<Card>()
     private val random : Random = Random
+
+    fun init(resource: Resources, packageName: String) {
+        // Dynamic get assets, but resource intensive. Not recommended way
+        /*val cardPrefix = arrayOf<String>("clubs_of", "diamonds_of", "hearts_of", "spades_of")
+        for (prefix in cardPrefix) {
+            for (index in 2..14) {
+                val resourceId = resource.getIdentifier("${prefix}_$index", "drawable", packageName)
+                cards.add(Card(index, resourceId))
+            }
+        }*/
+
+        val cardsArray : TypedArray = resource.obtainTypedArray(R.array.cards)
+        for (i in 0..cardsArray.length()) {
+            val resourceId: Int = cardsArray.getResourceId(i, -1)
+            if (resourceId != -1) {
+                cards.add(Card(i, resourceId))
+            }
+        }
+    }
 
     fun drawCard(image : ImageView) : Card {
         val card = cards[random.nextInt(cards.size)]

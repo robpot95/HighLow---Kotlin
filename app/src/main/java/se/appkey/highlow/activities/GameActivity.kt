@@ -2,6 +2,7 @@ package se.appkey.highlow.activities
 
 import Deck
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
@@ -51,6 +52,7 @@ class GameActivity : AppCompatActivity() {
 
         btnHigh.setOnClickListener(clickListener)
         btnLow.setOnClickListener(clickListener)
+        deck.init(resources, packageName)
     }
 
     private val clickListener: View.OnClickListener = View.OnClickListener { view ->
