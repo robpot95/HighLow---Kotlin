@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="cards">
-        <item>@drawable/card_back</item>
         <item>@drawable/clubs_of_2</item>
         <item>@drawable/clubs_of_3</item>
         <item>@drawable/clubs_of_4</item>

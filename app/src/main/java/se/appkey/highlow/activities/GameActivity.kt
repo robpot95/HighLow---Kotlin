@@ -62,14 +62,14 @@ class GameActivity : AppCompatActivity() {
             R.id.btnHigh -> {
                 if (playerCard.getValue() > dealerCard.getValue()) {
                     points++
-                } else {
+                } else if (playerCard.getValue() < dealerCard.getValue()) {
                     points--
                 }
             }
             R.id.btnLow -> {
                 if (playerCard.getValue() < dealerCard.getValue()) {
                     points++
-                } else {
+                } else if (playerCard.getValue() > dealerCard.getValue()) {
                     points--
                 }
             }

@@ -1,6 +1,5 @@
 import android.content.res.Resources
 import android.content.res.TypedArray
-import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import se.appkey.highlow.R
 import kotlin.random.Random
@@ -21,12 +20,14 @@ class Deck {
         }*/
 
         val cardsArray : TypedArray = resource.obtainTypedArray(R.array.cards)
-        for (i in 0..cardsArray.length()) {
+        for (i in 0 until cardsArray.length()) {
             val resourceId: Int = cardsArray.getResourceId(i, -1)
             if (resourceId != -1) {
-                cards.add(Card(i, resourceId))
+                cards.add(Card((i % 13) + 2, resourceId))
             }
         }
+
+        cardsArray.recycle()
     }
 
     fun drawCard(image : ImageView) : Card {
