@@ -1,13 +1,11 @@
 import android.content.res.Resources
 import android.content.res.TypedArray
-import android.widget.ImageView
+import android.util.Log
 import se.appkey.highlow.R
-import kotlin.random.Random
-
 
 class Deck {
     private val cards = mutableListOf<Card>()
-    private val random : Random = Random
+    private val discardedCards = mutableListOf<Card>()
 
     fun init(resource: Resources, packageName: String) {
         // Dynamic get assets, but resource intensive. Not recommended way
@@ -28,11 +26,20 @@ class Deck {
         }
 
         cardsArray.recycle()
+        cards.shuffle()
     }
 
-    fun drawCard(image : ImageView) : Card {
-        val card = cards[random.nextInt(cards.size)]
-        image.setImageResource(card.getResourceId())
+    fun drawCard() : Card {
+        Log.d("MyPrint", cards.size.toString())
+        if (cards.isEmpty()) {
+            cards.addAll(discardedCards)
+            cards.shuffle()
+            discardedCards.clear()
+        }
+
+        val card = cards.first()
+        discardedCards.add(card)
+        cards.removeFirst()
         return card
     }
 }

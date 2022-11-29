@@ -1,6 +1,5 @@
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 
 class HighScorePrefs(context: Context) {
     private val sharedPrefs: SharedPreferences =  context.getSharedPreferences("high_score", Context.MODE_PRIVATE)
@@ -9,7 +8,7 @@ class HighScorePrefs(context: Context) {
         // sharedPrefs.edit().clear().apply()
     }
 
-    fun getScore(): List<String> {
+    fun getScores(): List<String> {
         val scores = sharedPrefs.getStringSet("high_score", emptySet()) ?: emptySet()
         return scores.reversed()
     }

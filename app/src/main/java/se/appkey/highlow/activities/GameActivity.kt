@@ -67,7 +67,7 @@ class GameActivity : AppCompatActivity() {
         highScorePrefs = HighScorePrefs(this)
         deck.init(resources, packageName)
 
-        val heartEmoji = String(Character.toChars(0x1F60A))
+        val heartEmoji = String(Character.toChars(0x1f493))
         for (i in 1..5) {
             lives.add(heartEmoji)
             tvHearts.append(heartEmoji)
@@ -78,8 +78,10 @@ class GameActivity : AppCompatActivity() {
     }
 
     private val clickListener: View.OnClickListener = View.OnClickListener { view ->
-        val playerCard = deck.drawCard(ivPlayerCard)
-        val dealerCard = deck.drawCard(ivDealerCard)
+        val playerCard = deck.drawCard()
+        val dealerCard = deck.drawCard()
+        ivPlayerCard.setImageResource(playerCard.getResourceId())
+        ivDealerCard.setImageResource(dealerCard.getResourceId())
         when (view.id) {
             R.id.btnHigh -> {
                 gameState = if (playerCard.getValue() > dealerCard.getValue()) {
@@ -128,7 +130,7 @@ class GameActivity : AppCompatActivity() {
             ivDealerCard.setImageResource(R.drawable.card_back)
             btnHigh.isEnabled = true
             btnLow.isEnabled = true
-        }, 100)
+        }, 2000)
     }
 
     private fun showToast(message: String) {
