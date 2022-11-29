@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
     tools:context=".activities.GameActivity">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/lyHearts"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvHearts"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:layout_width="100dp"
+            android:scrollHorizontally="false"
+            android:gravity="left">
+        </TextView>
+    </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/lyCardDealer"
@@ -53,14 +69,14 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Points"
-            android:textSize="32dp" />
+            android:textSize="32sp" />
         <TextView
             android:id="@+id/tvPoints"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_below="@+id/tvPointsLabel"
             android:layout_centerInParent="true"
-            android:textSize="32dp"
+            android:textSize="32sp"
             android:text="0" />
 
     </RelativeLayout>

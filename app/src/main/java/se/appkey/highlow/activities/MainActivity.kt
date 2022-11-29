@@ -17,8 +17,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         val playButton = findViewById<Button>(R.id.btnPlay)
+        val highScoreButton = findViewById<Button>(R.id.btnHighScore)
         val howToPlayButton = findViewById<Button>(R.id.btnHowToPlay)
         playButton.setOnClickListener(clickListener)
+        highScoreButton.setOnClickListener(clickListener)
         howToPlayButton.setOnClickListener(clickListener)
     }
 
@@ -26,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         when (view.id) {
             R.id.btnPlay -> {
                 startActivity(Intent(this, GameActivity::class.java))
+            }
+            R.id.btnHighScore -> {
+                startActivity(Intent(this, HighScoreActivity::class.java))
             }
             R.id.btnHowToPlay -> {
                 startActivity(Intent(this, HowToPlayActivity::class.java))
